@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <MainNav/>
     <MainLoading v-if="loading"/>
     <MainExtra/>
   </div>
@@ -9,6 +10,7 @@
 import bootstrap from 'bootstrap/dist/js/bootstrap.js'
 import MainLoading from 'components/Loading/PushingPixels.vue'
 import MainExtra from 'components/Base/Extra.vue'
+import MainNav from 'components/Base/Nav.vue'
 export default {
   name: 'app',
   computed: {
@@ -19,6 +21,7 @@ export default {
   components: {
     MainLoading,
     MainExtra,
+    MainNav,
   }
 }
 </script>

@@ -1,5 +1,11 @@
 @import 'src/assets/variable'
 
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic')
+$font-theme: 'Didact Gothic'
+
+h1, h2, h3, h4, h5, h6, div, span, a, strong, p, label, select, textarea, td, th,li, input, input::-webkit-input-placeholder, button, code
+  font-family:  $font-theme, 'Microsoft JhengHei', monospace, 'Fontawesome'
+
 .table-inverse
   &>thead
     &>tr
@@ -7,24 +13,6 @@
       &>th
         color: $white
 
-table[data-role="list-table"]
-  th.select, td.select
-    width: 30px
-  th.sortable-handler, td.sortable-handler
-    width: 50px
-    text-align: center
-  tbody
-    &>tr
-      border-bottom: 1px lighten($light-gray, 10%) solid
-      cursor: pointer
-      &:hover
-        background-color: lighten($light-gray, 27%)
-      &>td
-        border: none
-  tr[data-role="empty-tr"]
-    td
-      padding: 10px
-      text-align: center
 span[data-role="mark"]
   color: $theme-color
   font-weight: bolder

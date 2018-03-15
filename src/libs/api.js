@@ -17,11 +17,11 @@ const api =  {
     }
     return result
   },
-  RenewToken: () => {
+  Config: (type) => {
     return $.request({
-      url: `/member/token`,
-      type: 'PUT',
-      api: `member.renew.token`,
+      url: `/config/${type}`,
+      type: 'GET',
+      api: `config`,
     })
   },
 }

@@ -1,0 +1,37 @@
+<template>
+  <router-link :to="{ name: 'home' }" data-role="nav-brand">
+    <i class="fa fa-anchor"></i>
+    <span>{{site.name}}</span>
+  </router-link>
+</template>
+
+<script>
+export default {
+  data: function () {
+    return {}
+  },
+  created: function () {},
+  methods: {},
+  computed: {
+    site: function () {
+      return this.$store.getters.site
+    },
+  },
+  watch: {},
+  components: {},
+}
+</script>
+
+<style lang="sass" type="text/sass" scoped>
+@import 'src/assets/variable'
+a[data-role="nav-brand"]
+  color: $white
+  position: absolute
+  top: 0
+  height: $nav-height
+  line-height: $nav-height
+  padding: 0 20px
+  text-decoration: none
+  .fa
+    color: $light-blue
+</style>

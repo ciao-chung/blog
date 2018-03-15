@@ -7,7 +7,6 @@ import VueMoment from 'vue-moment'
 import translate from 'libs/trans.js'
 import popover from 'src/libs/popover.js'
 
-
 Vue.config.productionTip = false
 
 window.self.$ = $
