@@ -1,9 +1,11 @@
 export default [
   {
     label: 'menu.about',
+    icon: 'user-circle',
     sub: [
       {
         label: 'menu.dance',
+        icon: 'music',
         route: {
           name: 'post',
           params: { code: 'dance' },
@@ -11,6 +13,7 @@ export default [
       },
       {
         label: 'menu.coding',
+        icon: 'desktop',
         route: {
           name: 'post',
           params: { code: 'coding' },
@@ -18,6 +21,7 @@ export default [
       },
       {
         label: 'menu.trip',
+        icon: 'map-marker',
         route: {
           name: 'post',
           params: { code: 'trip' },
@@ -25,6 +29,7 @@ export default [
       },
       {
         label: 'menu.navy',
+        icon: 'anchor',
         route: {
           name: 'post',
           params: { code: 'navy' },
@@ -34,9 +39,11 @@ export default [
   },
   {
     label: 'menu.web_dev',
+    icon: 'code',
     sub: [
       {
         label: 'menu.skill',
+        icon: 'rocket',
         route: {
           name: 'post',
           params: { code: 'skill' },
@@ -44,6 +51,7 @@ export default [
       },
       {
         label: 'menu.design',
+        icon: 'file-code-o',
         route: {
           name: 'design',
         },
@@ -52,12 +60,14 @@ export default [
   },
   {
     label: 'menu.article',
+    icon: 'share-alt',
     route: {
       name: 'article',
     },
   },
   {
     label: 'menu.github',
+    icon: 'github',
     url: 'https://github.com/ciao-chung',
   },
 ]

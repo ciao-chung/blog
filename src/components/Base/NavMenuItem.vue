@@ -2,17 +2,20 @@
   <li>
     <!--外部連結-->
     <a :href="item.url" target="_blank" v-if="type == 'url'">
-      {{item.label| trans}}
+      <i class="fa" :class="'fa-'+item.icon"></i>
+      <span>{{item.label| trans}}</span>
     </a>
 
     <!--內部路由-->
     <router-link :to="item.route" v-if="type == 'route'">
-      {{item.label| trans}}
+      <i class="fa" :class="'fa-'+item.icon"></i>
+      <span>{{item.label| trans}}</span>
     </router-link>
 
     <!--群組連結-->
     <a v-if="type == 'group'">
-      {{item.label| trans}}
+      <i class="fa" :class="'fa-'+item.icon"></i>
+      <span>{{item.label| trans}}</span>
     </a>
 
     <ul v-if="type == 'group'">
@@ -31,9 +34,6 @@ export default {
   data: function () {
     return {}
   },
-  created: function () {},
-  methods: {},
-  watch: {},
   components: {
     MenuItem,
   },

@@ -30,9 +30,26 @@ export default {
 </script>
 
 <style lang="sass" type="text/sass">
+@import 'src/assets/variable'
 div[data-role="nav-menu"]
+  text-align: center
   ul
     list-style: none
+    margin: 0
+    padding: 0
     li
-      color: blue
+      display: inline-block
+      cursor: pointer
+      a
+        display: inline-block
+        padding: 0 20px
+        color: blue
+
+        height: $nav-height
+        line-height: $nav-height
+        color: $white
+        border: 1px yellow solid
+        text-decoration: none
+      &>ul
+        display: none
 </style>
