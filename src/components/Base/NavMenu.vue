@@ -44,12 +44,17 @@ div[data-role="nav-menu"]
         display: inline-block
         padding: 0 20px
         color: blue
-
+        background-color: $black
         height: $nav-height
         line-height: $nav-height
         color: $white
         border: 1px yellow solid
         text-decoration: none
-      &>ul
+      ul.sub-menu-container
         display: none
+        position: absolute
+        &[open]
+          display: block
+        li
+          display: block
 </style>

@@ -13,12 +13,12 @@
     </router-link>
 
     <!--群組連結-->
-    <a v-if="type == 'group'">
+    <a v-if="type == 'group'" @click="sub_menu_open = !sub_menu_open">
       <i class="fa" :class="'fa-'+item.icon"></i>
       <span>{{item.label| trans}}</span>
     </a>
 
-    <ul v-if="type == 'group'">
+    <ul v-if="type == 'group'" class="sub-menu-container" :open="sub_menu_open">
       <MenuItem v-for="sub_item, index in item.sub"
         :key="index"
         :item="sub_item"/>
@@ -32,7 +32,9 @@ export default {
   name: 'MenuItem',
   props: ['item'],
   data: function () {
-    return {}
+    return {
+      sub_menu_open: false,
+    }
   },
   components: {
     MenuItem,
