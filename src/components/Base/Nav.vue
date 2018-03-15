@@ -1,11 +1,13 @@
 <template>
   <div data-role="nav">
     <NavBrand/>
+    <NavMenu/>
   </div>
 </template>
 
 <script>
 import NavBrand from 'components/Base/NavBrand.vue'
+import NavMenu from 'components/Base/NavMenu.vue'
 export default {
   data: function () {
     return {}
@@ -18,6 +20,7 @@ export default {
   },
   components: {
     NavBrand,
+    NavMenu,
   },
 }
 </script>
