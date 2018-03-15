@@ -1,0 +1,30 @@
+@import 'src/assets/variable'
+
+.table-inverse
+  &>thead
+    &>tr
+      background-color: lighten($black, 15%)
+      &>th
+        color: $white
+
+table[data-role="list-table"]
+  th.select, td.select
+    width: 30px
+  th.sortable-handler, td.sortable-handler
+    width: 50px
+    text-align: center
+  tbody
+    &>tr
+      border-bottom: 1px lighten($light-gray, 10%) solid
+      cursor: pointer
+      &:hover
+        background-color: lighten($light-gray, 27%)
+      &>td
+        border: none
+  tr[data-role="empty-tr"]
+    td
+      padding: 10px
+      text-align: center
+span[data-role="mark"]
+  color: $theme-color
+  font-weight: bolder
