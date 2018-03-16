@@ -31,6 +31,7 @@ export default {
 
 <style lang="sass" type="text/sass">
 @import 'src/assets/variable'
+$transition-during: 0.7s
 div[data-role="nav-menu"]
   text-align: center
   ul
@@ -53,10 +54,12 @@ div[data-role="nav-menu"]
         border: 1px yellow solid
         text-decoration: none
       ul.sub-menu-container
-        display: none
         position: absolute
+        opacity: 0
+        transition: all $transition-during ease
         &[open]
-          display: block
+          transition: all $transition-during ease
+          opacity: 1
         li
           display: block
 </style>
