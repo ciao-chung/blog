@@ -57,7 +57,9 @@ div[data-role="nav-menu"]
         transition: all $transition-during ease
         opacity: 0
         max-height: 0
+        pointer-events: none
         &[open]
+          pointer-events: auto
           transition: all $transition-during ease
           opacity: 1
           max-height: 100%
