@@ -46,6 +46,8 @@ div[data-role="nav-menu"]
         width: 100%
         color: $white
         text-decoration: none
+        &.router-link-active
+          color: $theme-color
       ul.sub-menu-container
         position: absolute
         transition: all $transition-during ease

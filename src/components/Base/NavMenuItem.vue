@@ -13,7 +13,7 @@
     </router-link>
 
     <!--群組連結-->
-    <a v-if="type == 'group'" @click="switchSubMenu">
+    <a v-if="type == 'group'" @click="switchSubMenu" :class="{ 'router-link-active': subMenuHasActive}">
       <i class="fa" :class="'fa-'+item.icon"></i>
       <span>{{item.label| trans}}</span>
     </a>
@@ -34,10 +34,17 @@ export default {
   data: function () {
     return {
       sub_menu_open: false,
+      subMenuHasActive: false,
     }
   },
   created: function () {
     this.$root.$on('switch.sub.menu', this.close)
+  },
+  mounted: function () {
+    this.checkSubMenuHasActive()
+  },
+  updated: function () {
+    this.checkSubMenuHasActive()
   },
   beforeDestroy: function () {
     this.$root.$off('switch.sub.menu')
@@ -51,6 +58,13 @@ export default {
       if(this.item.label == label) return
       this.sub_menu_open = false
     },
+    checkSubMenuHasActive: function () {
+      if(this.type != 'group')
+        return this.subMenuHasActive = false
+      for(const sub_item of this.item.sub)
+        if (sub_item.route.path == this.$route.path) return this.subMenuHasActive = true
+      this.subMenuHasActive = false
+    },
   },
   components: {
     MenuItem,
@@ -61,7 +75,12 @@ export default {
       if(this.item.route) return 'route'
       return 'url'
     },
-  }
+  },
+  watch: {
+    $route: function () {
+      this.checkSubMenuHasActive()
+    },
+  },
 }
 </script>
 
