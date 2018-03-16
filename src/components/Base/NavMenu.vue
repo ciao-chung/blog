@@ -25,6 +25,7 @@ export default {
 
 <style lang="sass" type="text/sass">
 @import 'src/assets/variable'
+
 $transition-during: 0.7s
 div[data-role="nav-menu"]
   text-align: center
