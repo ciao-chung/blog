@@ -40,6 +40,7 @@ div[data-role="nav-menu"]
     li
       display: inline-block
       cursor: pointer
+      width: $li-width
       a
         display: inline-block
         padding: 0 20px
@@ -47,6 +48,7 @@ div[data-role="nav-menu"]
         background-color: $black
         height: $nav-height
         line-height: $nav-height
+        width: 100%
         color: $white
         border: 1px yellow solid
         text-decoration: none
