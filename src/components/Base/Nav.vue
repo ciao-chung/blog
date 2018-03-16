@@ -1,26 +1,30 @@
 <template>
   <div data-role="nav">
     <NavBrand/>
-    <NavMenu/>
+    <NavMenu :open="open" />
+    <NavSwitch @switchNav="switchNav"/>
   </div>
 </template>
 
 <script>
 import NavBrand from 'components/Base/NavBrand.vue'
 import NavMenu from 'components/Base/NavMenu.vue'
+import NavSwitch from 'components/Base/NavSwitch.vue'
 export default {
   data: function () {
-    return {}
+    return {
+      open: false,
+    }
   },
-  created: function () {},
-  methods: {},
-  computed: {},
-  watch: {
-    $route: function() {},
+  methods: {
+    switchNav: function (open) {
+      this.open = open
+    },
   },
   components: {
     NavBrand,
     NavMenu,
+    NavSwitch,
   },
 }
 </script>

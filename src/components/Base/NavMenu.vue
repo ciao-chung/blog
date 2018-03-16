@@ -67,6 +67,13 @@ div[data-role="nav-menu"]
           display: block
           border-top: 1px $white solid
   @media(max-width: 991px)
+    opacity: 0
+    max-height: 0
+    transition: all $transition-during ease
+    &[open]
+      transition: all $transition-during ease
+      max-height: 100vh
+      opacity: 1
     ul
       li
         display: block
