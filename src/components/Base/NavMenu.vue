@@ -34,6 +34,7 @@ export default {
 $transition-during: 0.7s
 div[data-role="nav-menu"]
   text-align: center
+  overflow-y: auto
   ul
     list-style: none
     margin: 0
@@ -45,21 +46,37 @@ div[data-role="nav-menu"]
       a
         display: inline-block
         padding: 0 20px
-        color: blue
         background-color: $black
         height: $nav-height
         line-height: $nav-height
         width: 100%
         color: $white
-        border: 1px yellow solid
         text-decoration: none
       ul.sub-menu-container
         position: absolute
-        opacity: 0
         transition: all $transition-during ease
+        opacity: 0
+        max-height: 0
         &[open]
           transition: all $transition-during ease
           opacity: 1
+          max-height: 100%
         li
           display: block
+  @media(max-width: 991px)
+    ul
+      li
+        display: block
+        width: 100%
+        background-color: $black
+        ul.sub-menu-container
+          position: relative
+          max-height: 0
+          opacity: 0
+          transition: all $transition-during ease
+          &[open]
+            transition: all $transition-during ease
+            max-height: 80vh
+            overflow-y: auto
+            opacity: 1
 </style>

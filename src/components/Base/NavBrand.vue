@@ -34,4 +34,8 @@ a[data-role="nav-brand"]
   text-decoration: none
   .fa
     color: $light-blue
+  @media(max-width: 991px)
+    position: relative
+    display: block
+    text-align: center
 </style>
