@@ -63,12 +63,14 @@ div[data-role="nav-menu"]
           max-height: 100%
         li
           display: block
+          border-top: 1px $white solid
   @media(max-width: 991px)
     ul
       li
         display: block
         width: 100%
         background-color: $black
+        border-top: 1px $white solid
         ul.sub-menu-container
           position: relative
           max-height: 0
