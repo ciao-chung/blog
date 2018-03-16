@@ -7,18 +7,11 @@
 
 <script>
 export default {
-  data: function () {
-    return {}
-  },
-  created: function () {},
-  methods: {},
   computed: {
     site: function () {
       return this.$store.getters.site
     },
   },
-  watch: {},
-  components: {},
 }
 </script>
 

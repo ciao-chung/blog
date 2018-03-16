@@ -39,9 +39,6 @@ new Vue({
     },
   },
   watch: {
-    hasLogin: function () {
-      this.checkRoute()
-    },
     $route: function () {
       this.checkRoute()
       this.$store.dispatch('breadcrumb.set', null)

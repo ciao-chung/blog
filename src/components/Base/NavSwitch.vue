@@ -9,21 +9,18 @@ export default {
       open: false,
     }
   },
-  created: function () {},
   methods: {
     switchNav: function () {
       this.open = !this.open
       this.$emit('switchNav', this.open)
     },
   },
-  watch: {},
-  components: {},
 }
 </script>
 
 <style lang="sass" type="text/sass" scoped>
 @import 'src/assets/variable'
-$close-button-size: $nav-height
+$close-button-size: $nav-height/2
 @mixin draw-diagonal ($deg)
   content: ''
   height: $close-button-size
@@ -32,15 +29,15 @@ $close-button-size: $nav-height
   transform: rotate($deg)
   left: $close-button-size/2
 div[data-role="close-button"]
-  @media(min-width: 992px)
-    display: none
-    pointer-events: none
   cursor: pointer
   width: $close-button-size
   height: $close-button-size
   position: absolute
-  top: 0
-  right: 0
+  top: ($nav-height - $close-button-size)/2
+  right: 10px
+  @media(min-width: 992px)
+    display: none
+    pointer-events: none
 
   &:before
     transition: all 0.5s ease

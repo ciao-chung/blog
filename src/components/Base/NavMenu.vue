@@ -12,17 +12,11 @@
 import MenuData from 'modules/nav.js'
 import MenuItem from 'components/Base/NavMenuItem.vue'
 export default {
-  data: function () {
-    return {}
-  },
-  created: function () {},
-  methods: {},
   computed: {
     menu: function () {
       return MenuData
     },
   },
-  watch: {},
   components: {
     MenuItem,
   },
