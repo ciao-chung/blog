@@ -37,4 +37,5 @@ div[data-role="nav"]
   background-color: $black
   opacity: 0.9
   position: fixed
+  top: 0
 </style>

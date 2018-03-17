@@ -24,6 +24,13 @@ const api =  {
       api: `config`,
     })
   },
+  Post: (code) => {
+    return $.request({
+      url: `/post/${code}`,
+      type: 'GET',
+      api: `post`,
+    })
+  },
 }
 
 export default api

@@ -16,6 +16,9 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+      meta: {
+        fullscreen: true,
+      },
     },
     {
       path: '/404',

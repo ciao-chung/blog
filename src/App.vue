@@ -1,6 +1,11 @@
 <template>
   <div id="app">
     <MainNav/>
+
+    <div data-role="router-view-container" :class="{ container: !isFullScreen }">
+      <router-view />
+    </div>
+
     <MainLoading v-if="loading"/>
     <MainExtra/>
   </div>
@@ -17,6 +22,9 @@ export default {
     loading: function () {
       return this.$store.getters.loading
     },
+    isFullScreen: function () {
+      return !!this.$route.meta.fullscreen
+    },
   },
   components: {
     MainLoading,
@@ -32,4 +40,6 @@ export default {
 @import 'src/assets/base'
 #app
   min-height: 100vh
+  div[data-role="router-view-container"]
+    margin-top: $nav-height + 30
 </style>
