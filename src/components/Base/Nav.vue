@@ -32,6 +32,7 @@ export default {
 <style lang="sass" type="text/sass" scoped>
 @import 'src/assets/variable'
 div[data-role="nav"]
+  z-index: $nav-zindex
   height: $nav-height
   width: 100vw
   background-color: $black

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <MainNav/>
+    <MainBreadcrumb />
 
     <div data-role="router-view-container" :class="{ container: !isFullScreen }">
       <router-view />
@@ -16,6 +17,7 @@ import bootstrap from 'bootstrap/dist/js/bootstrap.js'
 import MainLoading from 'components/Loading/PushingPixels.vue'
 import MainExtra from 'components/Base/Extra.vue'
 import MainNav from 'components/Base/Nav.vue'
+import MainBreadcrumb from 'components/Base/Breadcrumb.vue'
 export default {
   name: 'app',
   computed: {
@@ -30,6 +32,7 @@ export default {
     MainLoading,
     MainExtra,
     MainNav,
+    MainBreadcrumb,
   }
 }
 </script>
@@ -40,6 +43,8 @@ export default {
 @import 'src/assets/base'
 #app
   min-height: 100vh
-  div[data-role="router-view-container"]
+  div[data-role="breadcrumb"]
     margin-top: $nav-height + 30
+  div[data-role="router-view-container"]
+    margin-top: $nav-height
 </style>

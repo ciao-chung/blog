@@ -23,11 +23,23 @@ export default {
       this.$store.dispatch('loading')
       try {
         this.post = await api.Post(this.code)
+        this.setBreadcrumb()
         this.$store.dispatch('loading', false)
       } catch (reason) {
         this.$store.dispatch('loading', false)
         this.$route.replace({ name: '404' })
       }
+    },
+    setBreadcrumb: function () {
+      this.$store.dispatch('breadcrumb.set', [
+        {
+          label: 'page.home',
+          route: { name: 'home' },
+        },
+        {
+          label: this.post.title,
+        },
+      ])
     },
   },
   computed: {
