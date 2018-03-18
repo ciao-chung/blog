@@ -1,8 +1,15 @@
 <template>
-  <div class="containter">
+  <div :class="{ container: !isFullScreen }">
     <div data-role="breadcrumb" class="breadcrumb" v-if="breadcrumb">
       <li v-for="item in breadcrumb">
-        <a>{{item}}</a>
+        <router-link v-if="item.route"
+          :to="item.route">
+          {{item.label| trans}}
+        </router-link>
+        
+        <template v-if="!item.route">
+          {{item.label| trans}}
+        </template>
       </li>
     </div>
   </div>
@@ -13,6 +20,9 @@ export default {
   computed: {
     breadcrumb: function () {
       return this.$store.getters.breadcrumb
+    },
+    isFullScreen: function () {
+      return !!this.$route.meta.fullscreen
     },
   },
 }

@@ -45,6 +45,4 @@ export default {
   min-height: 100vh
   div[data-role="breadcrumb"]
     margin-top: $nav-height + 30
-  div[data-role="router-view-container"]
-    margin-top: $nav-height
 </style>

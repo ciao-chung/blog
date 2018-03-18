@@ -10,5 +10,7 @@ export default {
     'menu.design': '作品',
     'menu.article': '文章',
     'menu.github': 'Github',
+
+    'page.home': '首頁',
   }
 }
