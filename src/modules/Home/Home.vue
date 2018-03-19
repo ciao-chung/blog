@@ -22,7 +22,9 @@ export default {
               url: 'https://goo.gl/yALcQr',
             }
           ],
-        }
+        },
+        title: 'Ciao!',
+        brief: '我是板橋',
       },
     }
   },
