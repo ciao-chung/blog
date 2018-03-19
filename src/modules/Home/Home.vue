@@ -10,10 +10,24 @@ import HomeBanner from './HomeBanner'
 export default {
   data: function () {
     return {
-      banner: null,
+      banner: {
+        photo: {
+          master: {
+            uid: '123456',
+            url: 'https://goo.gl/yALcQr',
+          },
+          photos: [
+            {
+              uid: '123456',
+              url: 'https://goo.gl/yALcQr',
+            }
+          ],
+        }
+      },
     }
   },
   created: function () {
+    return
     this.init()
   },
   methods: {

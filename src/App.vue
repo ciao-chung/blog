@@ -3,7 +3,7 @@
     <MainNav/>
     <MainBreadcrumb />
 
-    <div data-role="router-view-container" :class="{ container: !isFullScreen }">
+    <div data-role="router-view-container" :class="{ container: !isFullScreen }" :fullscreen="isFullScreen">
       <router-view />
     </div>
 
@@ -45,4 +45,6 @@ export default {
   min-height: 100vh
   div[data-role="breadcrumb"]
     margin-top: $nav-height + 30
+  div[data-role="router-view-container"][fullscreen]
+    margin-top: $nav-height
 </style>
