@@ -78,6 +78,7 @@ export default {
   },
   watch: {
     $route: function () {
+      this.sub_menu_open = false
       this.checkSubMenuHasActive()
     },
   },
