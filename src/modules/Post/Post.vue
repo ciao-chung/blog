@@ -27,7 +27,7 @@ export default {
         this.$store.dispatch('loading', false)
       } catch (reason) {
         this.$store.dispatch('loading', false)
-        this.$route.replace({ name: '404' })
+        this.$router.replace({ name: '404' })
       }
     },
     setBreadcrumb: function () {

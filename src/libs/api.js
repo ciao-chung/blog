@@ -31,6 +31,13 @@ const api =  {
       api: `post`,
     })
   },
+  Banner: (position) => {
+    return $.request({
+      url: `/banner/${position}`,
+      type: 'GET',
+      api: `banner`,
+    })
+  },
 }
 
 export default api
