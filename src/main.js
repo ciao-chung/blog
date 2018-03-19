@@ -6,6 +6,7 @@ import VueMeta from 'vue-meta'
 import VueMoment from 'vue-moment'
 import translate from 'libs/trans.js'
 import popover from 'src/libs/popover.js'
+import SSR from 'src/libs/SSR'
 
 Vue.config.productionTip = false
 
