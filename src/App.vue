@@ -52,12 +52,6 @@ export default {
   div[data-role="router-view-container"][fullscreen]
     margin-top: $nav-height
 
-.transition-page
-  &-enter-active, &-leave-active
-    transition: all 0.5s ease
-  &-enter, &-leave-active
-    opacity: 0
-
 .transition-loading
   &-enter-active, &-leave-active
     transition: all 0.5s ease

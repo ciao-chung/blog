@@ -24,6 +24,14 @@ const api =  {
       api: `config`,
     })
   },
+  Article: (params) => {
+    return $.request({
+      url: `/article`,
+      data: params,
+      type: 'GET',
+      api: `article`,
+    })
+  },
   Post: (code) => {
     return $.request({
       url: `/post/${code}`,

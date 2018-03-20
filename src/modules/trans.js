@@ -12,5 +12,6 @@ export default {
     'menu.github': 'Github',
 
     'page.home': '首頁',
+    'page.article': '文章',
   }
 }
