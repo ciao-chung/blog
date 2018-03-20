@@ -3,7 +3,7 @@ import queryString from 'qs'
 class Helper {
   queryToJson(query) {
     let json = {}
-    json.page = query.page
+    json.page = !query.page ? 1 : query.page
     json.search = queryString.parse(query.search, { encode: false })
     json.sort = queryString.parse(query.sort, { encode: false })
     if(query.per_page) json.per_page = query.per_page

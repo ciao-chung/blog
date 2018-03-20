@@ -24,6 +24,13 @@ const api =  {
       api: `config`,
     })
   },
+  FlatTree: (branch) => {
+    return $.request({
+      url: `/tree/flat/${branch}`,
+      type: 'GET',
+      api: `branch`,
+    })
+  },
   Article: (params) => {
     return $.request({
       url: `/article`,

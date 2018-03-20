@@ -1,6 +1,8 @@
 <template>
   <div>
     <ComponentFilter
+      v-if="categories"
+      :categories="categories"
       :filter="filter"/>
 
     <div v-if="result">
@@ -30,14 +32,26 @@ export default {
     this.init()
   },
   methods: {
-    init: async function () {
-      this.categories = null
+    init: function () {
       this.setupBreadcrumb()
+      this.loadArticle()
+      this.loadCategories()
+    },
+    loadArticle: async function() {
+      this.$store.dispatch('loading')
       try {
         let params = $.extend(true, {}, this.filter)
         params.sort.data_order = 'desc'
         this.result = await api.Article(params)
-        console.warn(this.result)
+        this.$store.dispatch('loading', false)
+      } catch (error) {
+        this.$store.dispatch('loading', false)
+      }
+    },
+    loadCategories: async function() {
+      this.categories = null
+      try {
+        this.categories = await api.FlatTree('article')
       } catch (error) {
         console.error(error)
       }
@@ -61,6 +75,7 @@ export default {
   watch: {
     $route: function() {
       this.parseQueryAsFilter()
+      this.setupBreadcrumb()
     },
   },
   components: {
