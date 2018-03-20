@@ -1,6 +1,10 @@
 <template>
   <div data-role="article-filter">
-    {{filter}} -- {{filter_type}}
+    <FormRadio
+      v-model="filter_type"
+      @change="onFilterTypeChange"
+      :inline="true"
+      :options="radioInputOptions"/>
 
     <div class="search">
       <div class="input-group">
@@ -26,6 +30,7 @@
 </template>
 
 <script>
+import FormRadio from 'components/Ciao/Form/Radio.vue'
 export default {
   props: {
     filter: {
@@ -63,6 +68,10 @@ export default {
       if(this.value) return
       this.value = this.categories[0].id
     },
+    onFilterTypeChange: function (filter_type) {
+      if(filter_type == 'title') this.value = null
+      if(filter_type == 'category') this.value = this.categories[0].id
+    },
   },
   computed: {
     isSearchCategory: function () {
@@ -82,6 +91,15 @@ export default {
       if(this.isSearchTitle) return this.filter.search.title
       return this.filter.search['category.category_id']
     },
+    radioInputOptions: function () {
+      return [
+        { label: trans('article.data.title'), value: 'title' },
+        { label: trans('article.data.category'), value: 'category' },
+      ]
+    },
+  },
+  components: {
+    FormRadio,
   },
 }
 </script>

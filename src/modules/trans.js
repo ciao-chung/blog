@@ -13,5 +13,8 @@ export default {
 
     'page.home': '首頁',
     'page.article': '文章',
+
+    'article.data.title': '標題',
+    'article.data.category': '分類',
   }
 }
