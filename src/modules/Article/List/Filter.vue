@@ -6,11 +6,14 @@
       :inline="true"
       :options="radioInputOptions"/>
 
+    {{searchValue}} ,, {{value}}
+
     <div class="search">
       <div class="input-group">
         <input
           v-if="filter_type != 'category'"
           v-model="value"
+          @keyup.enter="search"
           type="text" class="form-control flat">
 
         <select class="form-control flat" v-if="filter_type == 'category'" v-model="value">
@@ -19,7 +22,7 @@
           </option>
         </select>
 
-        <span class="input-group-btn">
+        <span class="input-group-btn" @click="search">
           <button class="btn btn-success btn-flat">
             <i class="fa fa-search"></i>
           </button>
@@ -31,6 +34,7 @@
 
 <script>
 import FormRadio from 'components/Ciao/Form/Radio.vue'
+import Helper from 'libs/helper'
 export default {
   props: {
     filter: {
@@ -69,8 +73,15 @@ export default {
       this.value = this.categories[0].id
     },
     onFilterTypeChange: function (filter_type) {
+      return
       if(filter_type == 'title') this.value = null
       if(filter_type == 'category') this.value = this.categories[0].id
+    },
+    search: function () {
+      this.$emit('search', {
+        type: this.filter_type,
+        value: this.value,
+      })
     },
   },
   computed: {
@@ -88,14 +99,22 @@ export default {
     },
     searchValue: function () {
       if(!this.isSearchTitle && !this.isSearchCategory) return null
-      if(this.isSearchTitle) return this.filter.search.title
-      return this.filter.search['category.category_id']
+      if(this.isSearchTitle) return Helper.removeLikeSymbol(this.filter.search.title)
+      return Helper.removeLikeSymbol(this.filter.search['category.category_id'])
     },
     radioInputOptions: function () {
       return [
         { label: trans('article.data.title'), value: 'title' },
         { label: trans('article.data.category'), value: 'category' },
       ]
+    },
+  },
+  watch: {
+    filter: {
+      deep: true,
+      handler: function () {
+        this.init()
+      },
     },
   },
   components: {

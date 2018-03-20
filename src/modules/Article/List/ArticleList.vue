@@ -2,6 +2,7 @@
   <div>
     <ComponentFilter
       v-if="categories"
+      @search="search"
       :categories="categories"
       :filter="filter"/>
 
@@ -69,6 +70,25 @@ export default {
           label: 'page.article',
         },
       ])
+    },
+    search: function (data) {
+      if(!data.value) {
+        return
+      }
+
+      let filter = $.extend(true, {}, this.filter)
+      filter.search = {}
+      if(data.type == 'title') filter.search.title = `%${data.value}%`
+      if(data.type == 'category') filter.search['category.category_id'] = `%${data.value}%`
+
+      this.$router.push({
+        name: 'article',
+        query: {
+          page: filter.page,
+          search: Helper.jsonToQuery(filter.search),
+          sort: Helper.jsonToQuery({ data_order: 'desc' }),
+        },
+      })
     },
   },
   computed: {},
