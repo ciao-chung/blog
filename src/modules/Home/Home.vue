@@ -17,26 +17,10 @@ import HomeVcard from './HomeVcard'
 export default {
   data: function () {
     return {
-      banner: {
-        photo: {
-          master: {
-            uid: '123456',
-            url: 'https://goo.gl/yALcQr',
-          },
-          photos: [
-            {
-              uid: '123456',
-              url: 'https://goo.gl/yALcQr',
-            }
-          ],
-        },
-        title: 'Ciao!',
-        brief: '我是板橋',
-      },
+      banner: null,
     }
   },
   created: function () {
-    return
     this.init()
   },
   methods: {

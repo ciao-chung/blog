@@ -30,15 +30,14 @@ export default {
     photo: function () {
       if(!this.banner) return null
       if(!this.banner.photo) return null
-      if(!this.banner.photo.master) return null
-      return this.banner.photo.master.url
+      return this.banner.photo.url
     },
   },
   watch: {
     banner: {
       deep: true,
       handler: function () {
-        this.initHeight()
+        this.setHeight()
       },
     },
   },
