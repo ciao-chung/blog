@@ -1,9 +1,11 @@
 <template>
-  <div v-if="photo" data-role="home-banner">
-    <img :src="photo">
+  <div data-role="home-banner">
+    <div v-if="photo">
+      <img :src="photo">
 
-    <h2 class="title">{{banner.title}}</h2>
-    <h4 class="brief">{{banner.brief}}</h4>
+      <h2 class="title">{{banner.title}}</h2>
+      <h4 class="brief">{{banner.brief}}</h4>
+    </div>
   </div>
 </template>
 
@@ -22,7 +24,7 @@ export default {
     setHeight: function() {
       this.$nextTick(() => {
         this.initHeight = $(this.$el).height()
-        $(window).resize(() => $(this.$el).height(this.initHeight) )
+        $(window).resize(() => $(this.$el).height(this.initHeight))
       })
     },
   },
