@@ -98,29 +98,23 @@ export default {
       ])
     },
     search: function (data) {
-      if(!data.value) {
-        return
+      let filter = $.extend(true, {}, this.filter)
+      let query = {
+        page: filter.page,
       }
 
-      let filter = $.extend(true, {}, this.filter)
-      filter.search = {}
-      if(data.type == 'title') filter.search.title = `%${data.value}%`
-      if(data.type == 'category') filter.search['category.category_id'] = `%${data.value}%`
-
+      if(data.type == 'keyword') query.keyword = data.value
+      if(data.type == 'category') query.category = data.value
       this.$router.push({
         name: 'article',
-        query: {
-          page: filter.page,
-          search: Helper.jsonToQuery(filter.search),
-          sort: Helper.jsonToQuery({ data_order: 'desc' }),
-        },
+        query: query
       })
     },
   },
-  computed: {},
   watch: {
     $route: function() {
       this.parseQueryAsFilter()
+      this.loadArticle()
       this.setupBreadcrumb()
     },
   },

@@ -1,26 +1,14 @@
 <template>
   <div data-role="article-filter">
-    <FormRadio
-      v-model="filter_type"
-      @change="onFilterTypeChange"
-      :inline="true"
-      :options="radioInputOptions"/>
-
-    {{searchValue}} ,, {{value}}
+    {{filter}} ,, {{keyword}}
 
     <div class="search">
       <div class="input-group">
         <input
-          v-if="filter_type != 'category'"
-          v-model="value"
+          v-model="keyword"
           @keyup.enter="search"
+          :placeholder="keyword_placeholder"
           type="text" class="form-control flat">
-
-        <select class="form-control flat" v-if="filter_type == 'category'" v-model="value">
-          <option :value="category.id" v-for="category in categories">
-            {{category.name}}
-          </option>
-        </select>
 
         <span class="input-group-btn" @click="search">
           <button class="btn btn-success btn-flat">
@@ -33,8 +21,7 @@
 </template>
 
 <script>
-import FormRadio from 'components/Ciao/Form/Radio.vue'
-import Helper from 'libs/helper'
+import Helper from 'libs/helper.js'
 export default {
   props: {
     filter: {
@@ -52,8 +39,7 @@ export default {
   },
   data: function () {
     return {
-      filter_type: null,
-      value: null,
+      keyword: null,
     }
   },
   created: function () {
@@ -61,52 +47,28 @@ export default {
   },
   methods: {
     init: function () {
-      this.filter_type = null
-
-      if(!this.isSearchTitle && !this.isSearchCategory) return
-
-      this.filter_type = this.isSearchTitle ? 'title' : 'category'
-      this.value = this.searchValue
-
-      if(this.filter_type != 'category') return
-      if(this.value) return
-      this.value = this.categories[0].id
-    },
-    onFilterTypeChange: function (filter_type) {
-      return
-      if(filter_type == 'title') this.value = null
-      if(filter_type == 'category') this.value = this.categories[0].id
+      this.keyword = null
+      if(!this.isFilterByKeyword) return
+      let keyword = this.filter.search.title
+      keyword = Helper.removeLikeSymbol(keyword)
+      this.keyword = keyword
     },
     search: function () {
       this.$emit('search', {
-        type: this.filter_type,
-        value: this.value,
+        type: this.isFilterByKeyword ? 'keyword' : 'category',
+        value: this.keyword,
       })
     },
   },
   computed: {
-    isSearchCategory: function () {
-      if(!this.filter) return false
-      if(!this.filter.search) return false
-      if(!this.filter.search['category.category_id']) return false
-      return true
+    keyword_placeholder: function () {
+      return trans('article.keyword.help')
     },
-    isSearchTitle: function () {
-      if(!this.filter) return false
-      if(!this.filter.search) return false
-      if(!this.filter.search.title) return false
-      return true
+    isFilterByKeyword: function () {
+      return !!this.filter.search.title
     },
-    searchValue: function () {
-      if(!this.isSearchTitle && !this.isSearchCategory) return null
-      if(this.isSearchTitle) return Helper.removeLikeSymbol(this.filter.search.title)
-      return Helper.removeLikeSymbol(this.filter.search['category.category_id'])
-    },
-    radioInputOptions: function () {
-      return [
-        { label: trans('article.data.title'), value: 'title' },
-        { label: trans('article.data.category'), value: 'category' },
-      ]
+    isFilterByCategory: function () {
+      return !!this.filter.search.category
     },
   },
   watch: {
@@ -117,15 +79,11 @@ export default {
       },
     },
   },
-  components: {
-    FormRadio,
-  },
 }
 </script>
 
 <style lang="sass" type="text/sass" scoped>
 // @import 'src/assets/variable'
 div[data-role="article-filter"]
-  .search
-    max-width: 300px
+  max-width: 300px
 </style>
