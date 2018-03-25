@@ -1,11 +1,11 @@
 <template>
   <div data-role="home-banner">
-    <div v-if="photo">
+    <template v-if="photo">
       <img :src="photo">
 
       <h2 class="title">{{banner.title}}</h2>
       <h4 class="brief">{{banner.brief}}</h4>
-    </div>
+    </template>
   </div>
 </template>
 
