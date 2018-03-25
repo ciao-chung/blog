@@ -3,7 +3,9 @@
     <ComponentFilter
       v-if="categories"
       @search="search"
+      @changePage="changePage"
       :categories="categories"
+      :result="result"
       :filter="filter"/>
 
     <div v-if="result">
@@ -98,13 +100,21 @@ export default {
       ])
     },
     search: function (data) {
-      let filter = $.extend(true, {}, this.filter)
       let query = {
-        page: filter.page,
+        page: 1,
       }
 
+      if(!data.value) return
       if(data.type == 'keyword') query.keyword = data.value
       if(data.type == 'category') query.category = data.value
+      this.$router.push({
+        name: 'article',
+        query: query
+      })
+    },
+    changePage: function (page) {
+      let query = $.extend(true, {}, this.$route.query)
+      query.page = page
       this.$router.push({
         name: 'article',
         query: query

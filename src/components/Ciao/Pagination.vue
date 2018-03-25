@@ -48,10 +48,10 @@ export default {
   data: function () {
     return {
       // 開始簡化的頁數
-      simplify_at: 10,
+      simplify_at: 3,
 
       // 間距值
-      padding: 5,
+      padding: 2,
 
       inputValue: 0,
     }

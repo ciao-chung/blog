@@ -2,6 +2,12 @@
   <div data-role="article-filter">
     {{filter}} ,, {{keyword}}
 
+    <div>
+      <Pagination
+        @changePage="changePage"
+        :pager="pager"/>
+    </div>
+
     <div class="search">
       <div class="input-group">
         <input
@@ -22,8 +28,15 @@
 
 <script>
 import Helper from 'libs/helper.js'
+import Pagination from 'components/Ciao/Pagination'
 export default {
   props: {
+    result: {
+      type: Object,
+      default: function () {
+        return null
+      }
+    },
     filter: {
       type: Object,
       default: function () {
@@ -59,8 +72,18 @@ export default {
         value: this.keyword,
       })
     },
+    changePage: function (page) {
+      this.$emit('changePage', page)
+    },
+  },
+  components: {
+    Pagination,
   },
   computed: {
+    pager: function () {
+      if(!this.result) return null
+      return this.result.pager
+    },
     keyword_placeholder: function () {
       return trans('article.keyword.help')
     },
