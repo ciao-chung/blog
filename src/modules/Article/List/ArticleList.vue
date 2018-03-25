@@ -58,7 +58,33 @@ export default {
       }
     },
     parseQueryAsFilter: function () {
-      this.filter = Helper.queryToJson(this.$route.query)
+      const page = !this.$route.query.page ? 1 : this.$route.query.page
+      const keyword = this.$route.query.keyword
+      const category = this.$route.query.category
+
+      let filter = {
+        search: {},
+        sort: {
+          data_order: 'desc',
+        },
+        search_type: 'or',
+        page: page
+      }
+
+      if(keyword) {
+        filter.search = {
+          title: `%${keyword}%`,
+          content: `%${keyword}%`,
+        }
+      }
+
+      if(category) {
+        filter.search = {
+          category: category
+        }
+      }
+
+      this.filter = filter
     },
     setupBreadcrumb: function () {
       this.$store.dispatch('breadcrumb.set', [
