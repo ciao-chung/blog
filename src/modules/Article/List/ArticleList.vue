@@ -44,7 +44,6 @@ export default {
       this.$store.dispatch('loading')
       try {
         let params = $.extend(true, {}, this.filter)
-        params.sort.data_order = 'desc'
         this.result = await api.Article(params)
         this.$store.dispatch('loading', false)
       } catch (error) {
@@ -82,7 +81,7 @@ export default {
 
       if(category) {
         filter.search = {
-          category: category
+          'category.category_id': category
         }
       }
 

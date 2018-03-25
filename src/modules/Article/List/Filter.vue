@@ -1,26 +1,42 @@
 <template>
   <div data-role="article-filter">
-    {{filter}} ,, {{keyword}}
-
-    <div>
+    <div class="pagination-wrap">
       <Pagination
         @changePage="changePage"
         :pager="pager"/>
     </div>
 
-    <div class="search">
-      <div class="input-group">
-        <input
-          v-model="keyword"
-          @keyup.enter="search"
-          :placeholder="keyword_placeholder"
-          type="text" class="form-control flat">
+    <div class="search row">
+      <div class="col-md-4">
+        <div class="input-group">
+          <input
+            v-model="keyword"
+            @keyup.enter="search('keyword')"
+            :placeholder="keyword_placeholder"
+            type="text" class="form-control flat">
 
-        <span class="input-group-btn" @click="search">
-          <button class="btn btn-success btn-flat">
-            <i class="fa fa-search"></i>
-          </button>
-        </span>
+          <span class="input-group-btn" @click="search('keyword')">
+            <button class="btn btn-success btn-flat">
+              <i class="fa fa-search"></i>
+            </button>
+          </span>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="input-group">
+          <select v-model="category" class="form-control flat">
+            <option v-for="category in category_list" :value="category.id">
+              {{category.name}}
+            </option>
+          </select>
+
+          <span class="input-group-btn" @click="search('category')">
+            <button class="btn btn-success btn-flat">
+              <i class="fa fa-tags"></i>
+            </button>
+          </span>
+        </div>
       </div>
     </div>
   </div>
@@ -53,6 +69,7 @@ export default {
   data: function () {
     return {
       keyword: null,
+      category: null,
     }
   },
   created: function () {
@@ -61,15 +78,20 @@ export default {
   methods: {
     init: function () {
       this.keyword = null
-      if(!this.isFilterByKeyword) return
+      this.category = null
+      if(this.isFilterByCategory) {
+        this.category = this.$route.query.category
+        return
+      }
+
       let keyword = this.filter.search.title
       keyword = Helper.removeLikeSymbol(keyword)
       this.keyword = keyword
     },
-    search: function () {
+    search: function (type) {
       this.$emit('search', {
-        type: this.isFilterByKeyword ? 'keyword' : 'category',
-        value: this.keyword,
+        type: type,
+        value: type == 'keyword' ? this.keyword : this.category,
       })
     },
     changePage: function (page) {
@@ -85,13 +107,21 @@ export default {
       return this.result.pager
     },
     keyword_placeholder: function () {
-      return trans('article.keyword.help')
+      return trans('article.filter.keyword.help')
     },
     isFilterByKeyword: function () {
-      return !!this.filter.search.title
+      return this.$route.query.keyword
     },
     isFilterByCategory: function () {
-      return !!this.filter.search.category
+      return this.$route.query.category
+    },
+    category_list: function () {
+      let category_list = [
+        { id: null, name: trans('article.filter.category_clear') }
+      ]
+      if(!this.categories) return category_list
+      category_list = category_list.concat(this.categories)
+      return category_list
     },
   },
   watch: {
@@ -107,6 +137,4 @@ export default {
 
 <style lang="sass" type="text/sass" scoped>
 // @import 'src/assets/variable'
-div[data-role="article-filter"]
-  max-width: 300px
 </style>

@@ -15,6 +15,7 @@ export default {
     'page.article': '文章',
 
     'article.data.category': '分類',
-    'article.keyword.help': '輸入文章標題或內容搜尋',
+    'article.filter.category_clear': '以分類搜尋',
+    'article.filter.keyword.help': '輸入文章標題或內容搜尋',
   }
 }
