@@ -14,7 +14,7 @@
       </router-link>
     </div>
 
-    <div v-html="content"></div>
+    <div data-role="html-content" v-html="content"></div>
   </div>
 </template>
 
@@ -65,7 +65,10 @@ export default {
         this.$store.dispatch('loading', false)
         const result = await api.ArticleContent(this.id)
         this.content = result.content
-        this.$nextTick(SSR.done)
+        this.$nextTick(() => {
+          SSR.done()
+          require('prismjs')
+        })
       } catch(error) {
         SSR.error()
         this.$store.dispatch('loading', false)
@@ -138,6 +141,7 @@ export default {
 }
 </script>
 
+<style src="prismjs/themes/prism-okaidia.css"></style>
 <style lang="sass" type="text/sass" scoped>
 @import 'src/assets/variable'
 div[data-role="article"]
@@ -150,4 +154,6 @@ div[data-role="article"]
       margin-right: 20px
       border-radius: 0
       font-size: 14px
+  div[data-role="html-content"]
+
 </style>
