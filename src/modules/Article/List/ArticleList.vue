@@ -30,6 +30,18 @@ export default {
       result: null,
     }
   },
+  metaInfo: function () {
+    return {
+      title: trans('page.article'),
+      meta: [
+        {
+          vmid: 'og:title',
+          property: 'og:title',
+          content: trans('page.article'),
+        },
+      ],
+    }
+  },
   created: function () {
     this.parseQueryAsFilter()
     this.init()
