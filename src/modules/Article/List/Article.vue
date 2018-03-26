@@ -18,7 +18,7 @@
       </div>
 
       <div class="category" v-if="article.category">
-        <router-link :to="{}" class="label label-info"
+        <router-link target="_blank" :to="{ name: 'article', query: { category: category.id } }" class="label label-info"
            v-for="category in article.category"
            :key="category.id">
           {{category.name}}
@@ -69,6 +69,7 @@ div[data-role="article-item"]
       border: 1px $light-gray solid
     img
       width: 100%
+      border: 1px $light-gray solid
     .default-photo
       width: 100%
       position: absolute
