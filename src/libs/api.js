@@ -46,6 +46,13 @@ const api =  {
       api: `article.detail`,
     })
   },
+  ArticleContent: (id) => {
+    return $.request({
+      url: `/article/${id}/content`,
+      type: 'GET',
+      api: `article.get.content`,
+    })
+  },
   Post: (code) => {
     return $.request({
       url: `/post/${code}`,
