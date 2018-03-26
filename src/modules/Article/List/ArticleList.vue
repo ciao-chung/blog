@@ -60,6 +60,7 @@ export default {
         this.$store.dispatch('loading', false)
         this.$nextTick(SSR.done)
       } catch (error) {
+        SSR.error()
         this.$store.dispatch('loading', false)
       }
     },

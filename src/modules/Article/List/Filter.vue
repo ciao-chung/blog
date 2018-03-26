@@ -5,7 +5,7 @@
         @changePage="changePage"
         :pager="pager"/>
 
-      <h3>{{'search.total'| trans}} {{pager.total}} {{'search.total.unit'| trans }}</h3>
+      <h3 v-if="pager">{{'search.total'| trans}} {{pager.total}} {{'search.total.unit'| trans }}</h3>
     </div>
 
     <div class="search row">

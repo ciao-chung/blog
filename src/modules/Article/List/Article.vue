@@ -10,7 +10,7 @@
     <div class="info">
       <span class="title">
         <i class="lock-icon fa fa-lock" v-if="article.is_lock"></i>
-        <router-link :to="{}">{{article.title}}</router-link>
+        <router-link :to="{ name: 'article-detail', params: { id: article.id } }">{{article.title}}</router-link>
       </span>
 
       <div class="time">
