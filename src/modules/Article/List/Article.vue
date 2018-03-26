@@ -61,12 +61,15 @@ div[data-role="article-item"]
     vertical-align: top
   .photo-warp
     width: $photo-size
-    height: $photo-size
+    height: auto
+    max-height: $photo-size
     overflow: hidden
     position: relative
     margin: $photo-margin $photo-margin $photo-margin 0
     &[default]
       border: 1px $light-gray solid
+      width: $photo-size
+      height: $photo-size
     img
       width: 100%
       border: 1px $light-gray solid
