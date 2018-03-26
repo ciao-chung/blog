@@ -145,4 +145,7 @@ export default {
 
 <style lang="sass" type="text/sass" scoped>
 // @import 'src/assets/variable'
+.search
+  &>*
+    margin: 20px 0
 </style>
