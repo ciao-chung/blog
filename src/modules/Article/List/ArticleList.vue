@@ -46,6 +46,7 @@ export default {
         let params = $.extend(true, {}, this.filter)
         this.result = await api.Article(params)
         this.$store.dispatch('loading', false)
+        this.$nextTick(SSR.done)
       } catch (error) {
         this.$store.dispatch('loading', false)
       }

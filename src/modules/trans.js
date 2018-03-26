@@ -14,6 +14,9 @@ export default {
     'page.home': '首頁',
     'page.article': '文章',
 
+    'search.total': '共',
+    'search.total.unit': '筆',
+
     'article.data.category': '分類',
     'article.filter.category_clear': '文章分類',
     'article.filter.clean': '清除搜尋條件',

@@ -30,6 +30,7 @@ export default {
       try {
         this.banner = await api.Banner('home')
         this.$store.dispatch('loading', false)
+        this.$nextTick(SSR.done)
       } catch (error) {
         this.$store.dispatch('loading', false)
       }
