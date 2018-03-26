@@ -38,6 +38,14 @@
           </span>
         </div>
       </div>
+
+      <div class="col-md-4">
+        <button class="btn btn-danger btn-flat">
+          <i class="fa fa-close"></i>
+          <span>{{'article.filter.clean'| trans}}</span>
+        </button>
+      </div>
+
     </div>
   </div>
 </template>

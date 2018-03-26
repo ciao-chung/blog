@@ -15,7 +15,10 @@ export default {
     'page.article': '文章',
 
     'article.data.category': '分類',
-    'article.filter.category_clear': '以分類搜尋',
+    'article.data.created_at': '建立時間',
+    'article.data.updated_at': '更新時間',
+    'article.filter.category_clear': '文章分類',
+    'article.filter.clean': '清除搜尋條件',
     'article.filter.keyword.help': '輸入文章標題或內容搜尋',
   }
 }
