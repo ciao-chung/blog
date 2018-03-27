@@ -14,12 +14,16 @@
       </router-link>
     </div>
 
-    <div data-role="html-content" v-html="content"></div>
+    <ArticleContent
+      @setContent="setContent"
+      :article="article"
+      :content="content"/>
   </div>
 </template>
 
 <script>
 import api from 'libs/api'
+import ArticleContent from './Content'
 export default {
   data: function () {
     return {
@@ -65,10 +69,7 @@ export default {
         this.$store.dispatch('loading', false)
         const result = await api.ArticleContent(this.id)
         this.content = result.content
-        this.$nextTick(() => {
-          SSR.done()
-          require('prismjs')
-        })
+        this.$nextTick(SSR.done)
       } catch(error) {
         SSR.error()
         this.$store.dispatch('loading', false)
@@ -116,6 +117,9 @@ export default {
         },
       ])
     },
+    setContent: function (content) {
+      this.content = content
+    },
   },
   computed: {
     id: function () {
@@ -137,11 +141,13 @@ export default {
       this.init()
     },
   },
-  components: {},
+  components: {
+    ArticleContent,
+  },
 }
 </script>
 
-<style src="prismjs/themes/prism-okaidia.css"></style>
+<style src="prismjs/themes/prism.css"></style>
 <style lang="sass" type="text/sass" scoped>
 @import 'src/assets/variable'
 div[data-role="article"]
@@ -154,6 +160,4 @@ div[data-role="article"]
       margin-right: 20px
       border-radius: 0
       font-size: 14px
-  div[data-role="html-content"]
-
 </style>

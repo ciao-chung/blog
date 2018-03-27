@@ -53,6 +53,14 @@ const api =  {
       api: `article.get.content`,
     })
   },
+  ArticleUnlock: (id, params) => {
+    return $.request({
+      url: `/article/${id}/private`,
+      type: 'GET',
+      data: params,
+      api: `article.unlock`,
+    })
+  },
   Post: (code) => {
     return $.request({
       url: `/post/${code}`,

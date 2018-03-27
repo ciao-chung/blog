@@ -1,6 +1,6 @@
 <template>
   <div data-role="article-item">
-    <router-link :to="{}" class="photo-warp" :default="!article.photo">
+    <router-link :to="{ name: 'article-detail', params: { id: article.id } }" class="photo-warp" :default="!article.photo">
       <img v-if="article.photo" :src="article.photo.url">
       <div v-if="!article.photo" class="default-photo">
         <i class="fa fa-share-alt"></i>
