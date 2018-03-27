@@ -2,6 +2,10 @@
   <div data-role="article" v-if="article">
     <h1>{{article.title}}</h1>
 
+    <div>
+      <ArticleClipBoard/>
+    </div>
+
     <div class="time">
       {{article.updated_at}}
     </div>
@@ -27,6 +31,7 @@
 import api from 'libs/api'
 import ArticleContent from './Content'
 import ArticleComment from './Disqus'
+import ArticleClipBoard from './ClipBoard'
 export default {
   data: function () {
     return {
@@ -145,6 +150,7 @@ export default {
     },
   },
   components: {
+    ArticleClipBoard,
     ArticleContent,
     ArticleComment,
   },
