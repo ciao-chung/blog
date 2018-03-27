@@ -18,12 +18,15 @@
       @setContent="setContent"
       :article="article"
       :content="content"/>
+
+    <ArticleComment v-if="!article.is_lock" />
   </div>
 </template>
 
 <script>
 import api from 'libs/api'
 import ArticleContent from './Content'
+import ArticleComment from './Disqus'
 export default {
   data: function () {
     return {
@@ -143,6 +146,7 @@ export default {
   },
   components: {
     ArticleContent,
+    ArticleComment,
   },
 }
 </script>
