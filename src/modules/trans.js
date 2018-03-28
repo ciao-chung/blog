@@ -21,5 +21,8 @@ export default {
     'article.filter.category_clear': '文章分類',
     'article.filter.clean': '清除搜尋條件',
     'article.filter.keyword.help': '輸入文章標題或內容搜尋',
+
+    'article.unlock.fail.title': '文章解鎖失敗',
+    'article.unlock.fail.content': '請重新輸入密碼',
   }
 }

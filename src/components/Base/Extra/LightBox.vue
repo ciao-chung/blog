@@ -5,6 +5,15 @@
         <div class="close-button-wrap">
           <CloseButton @change="change"/>
         </div>
+
+        <!--標題-->
+        <div class="title">{{title}}</div>
+
+        <!--內容-->
+        <div v-if="!component" v-html="content"></div>
+
+        <!--自訂元件-->
+        <component v-if="component"/>
       </div>
     </div>
   </transition>
@@ -14,8 +23,12 @@
 import CloseButton from 'components/Ciao/CloseButton'
 export default {
   created: function () {
-    this.$root.$on('lightbox')
+    this.$root.$on('lightbox', this.init)
     this.$root.$on('lightbox.close', this.close)
+    $(window).on('keydown', (e) => {
+      if(e.which != 27) return
+      this.close()
+    })
   },
   beforeDestroy: function () {
     this.$root.$off('lightbox')
@@ -23,10 +36,26 @@ export default {
   },
   data: function () {
     return {
-      open: true,
+      open: false,
+      title: null,
+      content: null,
+      component: null,
+      default_delay: 3000,
+      closeTimeout: null,
     }
   },
   methods: {
+    init: function (config) {
+      clearTimeout(this.closeTimeout)
+      this.open = true
+      this.title = config.title
+      this.content = config.content
+      this.component = config.component
+
+      if(config.sticky) return
+      const delay = !config.delay ? this.default_delay : config.delay
+      this.closeTimeout = setTimeout(this.close, delay)
+    },
     close: function () {
       this.open = false
     },
@@ -57,10 +86,15 @@ div[data-role="light-box-wrap"]
     opacity: 1
     position: absolute
     width: $width
-    height: $height
+    max-height: $height
     left: calc(50% - #{$width}/2)
     top: calc(50% - #{$height}/2)
     background: $white
+    padding: 20px
+    .title
+      font-size: 26px
+      margin: 10px 0
+      color: $theme-color
     .close-button-wrap
       position: absolute
       top: 0

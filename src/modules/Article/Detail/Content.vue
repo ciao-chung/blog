@@ -49,6 +49,10 @@ export default {
         this.$store.dispatch('loading', false)
       } catch (error) {
         this.$store.dispatch('loading', false)
+        this.$root.$emit('lightbox', {
+          title: trans('article.unlock.fail.title'),
+          content: trans('article.unlock.fail.content'),
+        })
       }
     },
   },
