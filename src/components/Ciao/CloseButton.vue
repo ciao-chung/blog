@@ -60,7 +60,6 @@ div[data-role="close-button"]
     transition: all 0.5s ease
     @include draw-diagonal(-45deg)
   &[active]
-
     &:before
       transition: all 0.5s ease
       @include draw-diagonal(270deg)

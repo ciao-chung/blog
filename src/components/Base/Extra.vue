@@ -1,14 +1,17 @@
 <template>
   <div>
-    <Fixed />
+    <Fixed/>
+    <LightBox/>
   </div>
 </template>
 
 <script>
 import Fixed from 'components/Base/Fixed'
+import LightBox from 'components/Base/Extra/LightBox'
 export default {
   components: {
     Fixed,
+    LightBox,
   },
 }
 </script>
