@@ -28,5 +28,6 @@ export default {
     'design.data.url': '網址',
     'design.data.period': '開發時間',
     'design.data.brief': '簡介',
+    'design.read_more': '詳細介紹',
   }
 }

@@ -25,6 +25,13 @@
         <div>{{design.brief}}</div>
       </div>
 
+      <div class="item bottom">
+        <router-link :to="{ name: 'design-detail', params: { id: design.id } }">
+          <button class="btn btn-info btn-flat">
+            {{'design.read_more'| trans}}
+          </button>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -49,7 +56,7 @@ export default {
 @import 'src/assets/variable'
 div[data-role="design-item"]
   margin-bottom: 60px
-  height: 450px
+  height: 500px
   .photo-wrap
     width: 100%
     height: 200px
@@ -59,5 +66,9 @@ div[data-role="design-item"]
       width: 100%
   .info
     .item
-      margin: 10px 0
+      margin: 20px 0
+      font-size: 16px
+  .bottom
+    height: 60px
+    border-bottom: 3px $theme-color solid
 </style>

@@ -46,7 +46,7 @@ export default {
   metaInfo: function () {
     return {
       title: this.title,
-      meta: this.meta
+      meta: this.meta,
     }
   },
   methods: {
