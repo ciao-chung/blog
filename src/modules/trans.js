@@ -13,6 +13,7 @@ export default {
 
     'page.home': '首頁',
     'page.article': '文章',
+    'page.design': '作品',
 
     'search.total': '共',
     'search.total.unit': '筆',
@@ -21,8 +22,11 @@ export default {
     'article.filter.category_clear': '文章分類',
     'article.filter.clean': '清除搜尋條件',
     'article.filter.keyword.help': '輸入文章標題或內容搜尋',
-
     'article.unlock.fail.title': '文章解鎖失敗',
     'article.unlock.fail.content': '請重新輸入密碼',
+
+    'design.data.url': '網址',
+    'design.data.period': '開發時間',
+    'design.data.brief': '簡介',
   }
 }

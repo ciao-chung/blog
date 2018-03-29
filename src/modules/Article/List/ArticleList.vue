@@ -19,7 +19,6 @@
 
 <script>
 import api from 'libs/api'
-import Helper from 'libs/helper'
 import ComponentFilter from './Filter'
 import ComponentArticle from './Article'
 export default {

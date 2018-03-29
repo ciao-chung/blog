@@ -75,6 +75,21 @@ const api =  {
       api: `banner`,
     })
   },
+  Design: (params) => {
+    return $.request({
+      url: `/design`,
+      type: 'GET',
+      data: params,
+      api: `design`,
+    })
+  },
+  DesignDetail: (id) => {
+    return $.request({
+      url: `/design/${id}`,
+      type: 'GET',
+      api: `design.detail`,
+    })
+  },
 }
 
 export default api
