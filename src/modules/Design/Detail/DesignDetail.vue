@@ -3,7 +3,7 @@
     <div class="photo-wrap" v-if="photo">
       <img :src="photo">
     </div>
-    
+
     <h1>{{design.name}}</h1>
 
     <div class="item">

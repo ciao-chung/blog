@@ -4,7 +4,7 @@
       <img :src="photo">
 
       <h2 class="title">{{banner.title}}</h2>
-      <h4 class="brief">{{banner.brief}}</h4>
+      <h4 class="description">{{banner.description}}</h4>
     </template>
   </div>
 </template>
@@ -55,7 +55,7 @@ div[data-role="home-banner"]
     width: 100%
     object-position: center 70%
     object-fit: cover
-  .title, .brief
+  .title, .description
     position: absolute
     width: 100%
     text-align: center
@@ -63,6 +63,6 @@ div[data-role="home-banner"]
   .title
     top: 60%
     font-size: 45px
-  .brief
+  .description
     top: 75%
 </style>
