@@ -22,6 +22,11 @@ export default {
   },
   created: function () {
     this.init()
+    dataLayer.push({
+      'event': 'BlogTracking',
+      'eventCategory': '頁面瀏覽',
+      'eventAction': '首頁',
+    })
   },
   methods: {
     init: async function () {

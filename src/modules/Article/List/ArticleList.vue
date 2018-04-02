@@ -58,6 +58,13 @@ export default {
         this.result = await api.Article(params)
         this.$store.dispatch('loading', false)
         this.$nextTick(SSR.done)
+
+        dataLayer.push({
+          'event': 'BlogTracking',
+          'eventCategory': '頁面瀏覽',
+          'eventAction': '文章列表',
+          'eventLabel': JSON.stringify(this.$route.query),
+        })
       } catch (error) {
         SSR.error()
         this.$store.dispatch('loading', false)

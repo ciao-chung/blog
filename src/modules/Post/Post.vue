@@ -25,6 +25,13 @@ export default {
         this.post = await api.Post(this.code)
         this.setBreadcrumb()
         this.$store.dispatch('loading', false)
+
+        dataLayer.push({
+          'event': 'BlogTracking',
+          'eventCategory': '頁面瀏覽',
+          'eventAction': '文案',
+          'eventLabel': this.post.title,
+        })
       } catch (reason) {
         this.$store.dispatch('loading', false)
         this.$router.replace({ name: '404' })

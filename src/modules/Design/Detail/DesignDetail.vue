@@ -59,6 +59,13 @@ export default {
         this.setupMeta()
         this.setupBreadcrumb()
         this.$nextTick(SSR.done)
+
+        dataLayer.push({
+          'event': 'BlogTracking',
+          'eventCategory': '頁面瀏覽',
+          'eventAction': '作品詳細頁',
+          'eventLabel': this.design.name,
+        })
       } catch (error) {
         this.$store.dispatch('loading', false)
         this.$router.replace({ name: '404' })

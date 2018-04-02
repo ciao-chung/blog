@@ -14,6 +14,7 @@ export default {
     'page.home': '首頁',
     'page.article': '文章',
     'page.design': '作品',
+    '404.message': '找不到本頁',
 
     'search.total': '共',
     'search.total.unit': '筆',

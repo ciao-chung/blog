@@ -49,6 +49,12 @@ export default {
         this.$store.dispatch('loading', false)
         this.setupBreadcrumb()
         this.$nextTick(SSR.done)
+        dataLayer.push({
+          'event': 'BlogTracking',
+          'eventCategory': '頁面瀏覽',
+          'eventAction': '作品列表',
+          'eventLabel': JSON.stringify(this.$route.query),
+        })
       } catch(error) {
         this.$store.dispatch('loading', false)
       }

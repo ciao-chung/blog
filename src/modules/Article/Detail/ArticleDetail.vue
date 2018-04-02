@@ -60,6 +60,13 @@ export default {
         this.setupMeta()
         this.setupBreadcrumb()
         this.loadContent()
+
+        dataLayer.push({
+          'event': 'BlogTracking',
+          'eventCategory': '頁面瀏覽',
+          'eventAction': '文章詳細頁',
+          'eventLabel': this.article.title,
+        })
       } catch (error) {
         SSR.error()
         this.$store.dispatch('loading', false)
