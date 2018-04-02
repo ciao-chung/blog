@@ -5,13 +5,14 @@ import router from 'src/router.js'
 import VueMeta from 'vue-meta'
 import VueMoment from 'vue-moment'
 import translate from 'libs/trans.js'
+import GoogleTagManger from 'libs/GoogleTagManger.js'
 import popover from 'src/libs/popover.js'
 import SSR from 'src/libs/SSR'
 
 Vue.config.productionTip = false
 
 window.self.$ = $
-
+window.dataLayer = window.dataLayer || []
 Vue.use(VueMeta)
 Vue.use(translate)
 Vue.use(VueMoment)
