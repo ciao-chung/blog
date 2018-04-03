@@ -1,6 +1,6 @@
 class ServerSideRender {
   constructor() {
-    this.is_ssr = typeof window.callPhantom == 'function'
+    this.is_ssr = typeof window.callPhantom === 'function'
   }
 
   done() {
