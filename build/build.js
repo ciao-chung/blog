@@ -10,6 +10,8 @@ const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
+const ApiBaseSwitcher = require('./ApiBaseSwitcher')
+ApiBaseSwitcher.productionMode()
 
 const spinner = ora('building for production...')
 spinner.start()
@@ -18,6 +20,7 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
   if (err) throw err
   webpack(webpackConfig, function (err, stats) {
     spinner.stop()
+    ApiBaseSwitcher.developMode()
     if (err) throw err
     process.stdout.write(stats.toString({
       colors: true,

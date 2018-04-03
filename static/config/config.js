@@ -1,11 +1,11 @@
 module.exports = {
   defaultLang: 'zh_TW',
 
-  devApi: {
-    url: 'http://localhost:9000/api',
+  develop: {
+    apibase: 'http://localhost:9000/api',
   },
 
-  prodApi: {
-    url: 'http://localhost:9000/api',
+  production: {
+    apibase: 'https://api.ciao-chung.com/api',
   },
 }
