@@ -37,7 +37,7 @@ module.exports = {
     {
       vmid: 'og:image',
       property: 'og:image',
-      content: 'https://cdn.ciao.idv.tw/blog/main/main-sm.jpg',
+      content: 'https://static.ciao-chung.com/ciao/blog/main-sm.jpg',
     },
   ],
   link: [
