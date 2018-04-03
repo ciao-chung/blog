@@ -1,3 +1,1 @@
-{
-  "apibase": "https://api.ciao-chung.com/api"
-}
+{"apibase":"http://localhost:9000/api"}
