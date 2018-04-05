@@ -41,18 +41,6 @@ class Token {
       }, 100)
       return
     }
-
-    window.clearTimeout(this.timeout)
-
-    import('libs/api').then((api) => {
-      const renewTokenApi = api.default.User.RenewToken()
-      renewTokenApi.then((result) => {
-        self.set(result.token)
-      })
-      renewTokenApi.catch(() => {
-        console.error('renew token fail')
-      })
-    })
   }
 
   now() {

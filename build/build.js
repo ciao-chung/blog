@@ -1,6 +1,6 @@
 'use strict'
 require('./check-versions')()
-
+require('shelljs/global')
 process.env.NODE_ENV = 'production'
 
 const ora = require('ora')
@@ -12,6 +12,13 @@ const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
 const ApiBaseSwitcher = require('./ApiBaseSwitcher')
 ApiBaseSwitcher.productionMode()
+
+const assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)
+exec(`rm -rf ${config.build.assetsRoot}`)
+mkdir('-p', assetsPath)
+cp('-R', 'static/*', assetsPath)
+cp('-R', 'copyfile/.htaccess', config.build.assetsRoot)
+cp('-R', 'copyfile/*', config.build.assetsRoot)
 
 const spinner = ora('building for production...')
 spinner.start()
