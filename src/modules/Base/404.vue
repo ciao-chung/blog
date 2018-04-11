@@ -15,6 +15,7 @@ export default {
       'eventCategory': '頁面瀏覽',
       'eventAction': '404',
     })
+    SSR.error()
   },
 }
 </script>

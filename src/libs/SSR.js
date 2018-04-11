@@ -1,19 +1,20 @@
 class ServerSideRender {
-  constructor() {
-    this.is_ssr = typeof window.callPhantom === 'function'
-  }
-
   done() {
-    $('body').append('<div ssr-done></div>')
-    if(!this.is_ssr) return
-    window.callPhantom('page.done')
+    $('head').append('<meta name="prerender-header" content="Location: https://www.google.com">')
+    if($('meta[name="prerender-status-code"]').length == 0) {
+      $('head').append('<meta name="prerender-status-code" content="200">')
+      return
+    }
+    $('meta[name="prerender-status-code"]').attr('content', '200')
   }
 
   error() {
-    $('body').append('<div ssr-error></div>')
-    if(!this.is_ssr) return
-    window.callPhantom('page.fail')
+    if($('meta[name="prerender-status-code"]').length == 0) {
+      $('head').append('<meta name="prerender-status-code" content="404">')
+      return
+    }
+    $('meta[name="prerender-status-code"]').attr('content', '404')
   }
 }
 
-window.SSR = new ServerSideRender
+window.SSR = new ServerSideRender()
