@@ -9,7 +9,7 @@ class GoogleTagManger {
   async init() {
     try {
       const result = await this.api.Config('site')
-      $('head').prepend(result.google_tag_manager)
+      $('head').append(result.google_tag_manager)
     } catch (error) {
       console.error(error)
     }
