@@ -17,12 +17,19 @@ export default {
   created: function () {
     this.init()
   },
+  metaInfo: function () {
+    return {
+      title: this.title,
+      meta: this.meta,
+    }
+  },
   methods: {
     init: async function () {
       this.post = null
       this.$store.dispatch('loading')
       try {
         this.post = await api.Post(this.code)
+        this.setupMeta()
         this.setBreadcrumb()
         this.$store.dispatch('loading', false)
 
@@ -48,10 +55,47 @@ export default {
         },
       ])
     },
+    setupMeta: function () {
+      let meta = [
+        {
+          vmid: 'og:title',
+          property: 'og:title',
+          content: this.post.title,
+        }
+      ]
+
+      if(this.post.descriptions) {
+        meta.push({
+          vmid: 'og:description',
+          property: 'og:description',
+          content: this.post.descriptions,
+        })
+      }
+
+      if(this.photo) {
+        meta.push({
+          vmid: 'og:image',
+          property: 'og:image',
+          content: this.photo,
+        })
+      }
+
+      this.meta = meta
+    },
   },
   computed: {
     code: function () {
       return this.$route.params.code
+    },
+    title: function () {
+      if(!this.post) return ''
+      return this.post.title
+    },
+    photo: function () {
+      if(!this.post) return ''
+      if(!this.post.photo) return ''
+      if(!this.post.photo.url) return ''
+      return this.post.photo.url
     },
   },
   watch: {
