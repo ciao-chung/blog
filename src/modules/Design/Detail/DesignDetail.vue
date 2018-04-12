@@ -80,7 +80,7 @@ export default {
         }
       ]
 
-      if(this.design.description) {
+      if(this.design.brief) {
         meta.push({
           vmid: 'og:description',
           property: 'og:description',

@@ -99,11 +99,11 @@ export default {
         }
       ]
 
-      if(this.article.description) {
+      if(this.article.descriptions) {
         meta.push({
           vmid: 'og:description',
           property: 'og:description',
-          content: this.article.description,
+          content: this.article.descriptions,
         })
       }
 
