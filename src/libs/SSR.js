@@ -1,6 +1,5 @@
 class ServerSideRender {
   done() {
-    $('head').append('<meta name="prerender-header" content="Location: https://www.google.com">')
     if($('meta[name="prerender-status-code"]').length == 0) {
       $('head').append('<meta name="prerender-status-code" content="200">')
       return
