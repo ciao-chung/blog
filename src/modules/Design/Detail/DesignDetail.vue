@@ -86,6 +86,12 @@ export default {
           property: 'og:description',
           content: this.design.brief,
         })
+
+        meta.push({
+          vmid: 'description',
+          name: 'description',
+          content: this.design.brief,
+        })
       }
 
       if(this.photo) {

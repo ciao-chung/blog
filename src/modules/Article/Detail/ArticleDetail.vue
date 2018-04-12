@@ -105,6 +105,12 @@ export default {
           property: 'og:description',
           content: this.article.descriptions,
         })
+
+        meta.push({
+          vmid: 'description',
+          name: 'description',
+          content: this.article.descriptions,
+        })
       }
 
       if(this.photo) {
