@@ -2,9 +2,6 @@ module.exports = {
   name: 'Ciao\'s Blog',
   meta: [
     {
-      charset: 'utf-8'
-    },
-    {
       vmid: 'keywords',
       name: 'keywords',
       content: 'Ciao\'s Blog,鍾板橋,板橋Blog',
