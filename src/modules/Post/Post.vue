@@ -64,6 +64,14 @@ export default {
         }
       ]
 
+      if(this.post.keywords) {
+        meta.push({
+          vmid: 'keywords',
+          name: 'keywords',
+          content: this.post.keywords,
+        })
+      }
+
       if(this.post.descriptions) {
         meta.push({
           vmid: 'og:description',

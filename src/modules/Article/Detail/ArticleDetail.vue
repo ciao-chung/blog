@@ -99,6 +99,14 @@ export default {
         }
       ]
 
+      if(this.article.keywords) {
+        meta.push({
+          vmid: 'keywords',
+          name: 'keywords',
+          content: this.article.keywords,
+        })
+      }
+
       if(this.article.descriptions) {
         meta.push({
           vmid: 'og:description',
