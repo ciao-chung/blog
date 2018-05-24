@@ -1,20 +1,22 @@
 <template>
   <div>
     <Fixed/>
-    <LightBox/>
+    <VueDialog/>
   </div>
 </template>
 
 <script>
 import Fixed from 'components/Base/Fixed'
 import LightBox from 'components/Base/Extra/LightBox'
+import Vue from 'vue'
+import CiaoVueDialog from 'ciao-vue-dialog'
+Vue.use(CiaoVueDialog)
 export default {
   components: {
     Fixed,
-    LightBox,
   },
 }
 </script>
 
-<style lang="sass" type="text/sass" scoped>
-</style>
+<style src="ciao-vue-dialog/dist/ciao-vue-dialog.css"></style>
+<style lang="sass" type="text/sass" scoped></style>

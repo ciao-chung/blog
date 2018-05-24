@@ -99,7 +99,7 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-animate.css@^3.5.2:
+animate.css@^3.5.2, animate.css@^3.6.1:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/animate.css/-/animate.css-3.6.1.tgz#4ea8a48556378bc8d7535224296c4c0dac9229de"
 
@@ -1373,6 +1373,14 @@ chromedriver@^2.27.2:
     kew "^0.7.0"
     mkdirp "^0.5.1"
     request "^2.83.0"
+
+ciao-vue-dialog@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/ciao-vue-dialog/-/ciao-vue-dialog-1.0.6.tgz#4f990dc8d0f30e4ceb3666e969e01f1d09166c70"
+  dependencies:
+    animate.css "^3.6.1"
+    jquery "^3.3.1"
+    vue "^2.5.16"
 
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
@@ -3832,7 +3840,7 @@ istanbul@^0.4.0:
     which "^1.1.1"
     wordwrap "^1.0.0"
 
-jquery@^3.2.1:
+jquery@^3.2.1, jquery@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
 
@@ -7223,7 +7231,7 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
-vue@^2.5.2:
+vue@^2.5.16, vue@^2.5.2:
   version "2.5.16"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.16.tgz#07edb75e8412aaeed871ebafa99f4672584a0085"
 
