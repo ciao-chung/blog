@@ -15,6 +15,12 @@ export default {
       this.$emit('switchNav', this.open)
     },
   },
+  watch: {
+    $route() {
+      this.open = false
+      this.$emit('switchNav', false)
+    },
+  },
 }
 </script>
 
