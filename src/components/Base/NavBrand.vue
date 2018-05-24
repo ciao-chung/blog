@@ -30,5 +30,7 @@ a[data-role="nav-brand"]
   @media(max-width: 991px)
     position: relative
     display: block
+    width: 60%
+    margin: auto
     text-align: center
 </style>
