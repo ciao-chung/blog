@@ -85,10 +85,6 @@ export default {
 
       let filter = {
         search: {},
-        sort: {
-          data_order: 'desc',
-        },
-        search_type: 'or',
         page: page
       }
 
