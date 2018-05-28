@@ -2,7 +2,7 @@
   <div v-if="post">
     <h1>{{post.title}}</h1>
 
-    <div data-role="content" v-html="post.content"></div>
+    <div data-role="html-content" v-html="post.content"></div>
   </div>
 </template>
 

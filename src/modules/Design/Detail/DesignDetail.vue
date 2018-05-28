@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div class="item" v-html="design.content"></div>
+    <div class="item" data-role="html-content" v-html="design.content"></div>
   </div>
 </template>
 
