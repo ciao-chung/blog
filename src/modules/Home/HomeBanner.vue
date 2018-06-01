@@ -61,8 +61,8 @@ div[data-role="home-banner"]
     text-align: center
     color: $white
   .title
-    top: 60%
+    top: 70%
     font-size: 45px
   .description
-    top: 75%
+    top: 85%
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div>
-    <HomeBanner :banner="banner" />
+    <HomeBanner :banner="top" />
 
     <div class="row">
       <div class="col-md-4 col-md-offset-4">
-        <HomeVcard />
+        <HomeVcard :banner="vcard" />
       </div>
     </div>
   </div>
@@ -17,7 +17,8 @@ import HomeVcard from './HomeVcard'
 export default {
   data: function () {
     return {
-      banner: null,
+      top: null,
+      vcard: null,
     }
   },
   created: function () {
@@ -29,19 +30,27 @@ export default {
     })
   },
   methods: {
-    init: async function () {
-      this.banner = null
+    async init() {
       this.$store.dispatch('loading')
       try {
-        this.banner = await api.Banner('home')
+        await Promise.all([
+          this.loadBanner('top'),
+          this.loadBanner('vcard'),
+        ])
         this.$store.dispatch('loading', false)
         this.$nextTick(SSR.done)
       } catch (error) {
         this.$store.dispatch('loading', false)
       }
     },
+    loadBanner(type) {
+      const self = this
+      this[type] = null
+      const _api = api.Banner(`home-${type}`)
+      _api.then((result) => self[type] = result)
+      return _api
+    },
   },
-  watch: {},
   components: {
     HomeBanner,
     HomeVcard,

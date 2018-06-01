@@ -1,11 +1,11 @@
 <template>
-  <div data-role="vcard">
+  <div data-role="vcard" v-if="banner">
     <div class="photo-wrap">
-      <img src="/static/images/photosticker.jpg" class="img-responsive img-circle">
+      <img :src="photo" class="img-responsive img-circle">
     </div>
 
     <div class="title">
-      {{title}}
+      {{banner.title}}
     </div>
 
     <div class="info">
@@ -23,9 +23,14 @@
 
 <script>
 export default {
+  props: {
+    banner: {
+      type: Object,
+      default: () => null,
+    }
+  },
   data: function () {
     return {
-      title: 'Ciao',
       data: [
         {
           text: 'Taichung City',
@@ -50,6 +55,13 @@ export default {
       ]
     }
   },
+  computed: {
+    photo() {
+      if(!this.banner) return null
+      if(!this.banner.photo) return null
+      return this.banner.photo.url
+    },
+  },
 }
 </script>
 
@@ -68,6 +80,7 @@ div[data-role="vcard"]
     text-align: center
     img
       display: initial
+      max-width: 180px
   .title
     text-align: center
     margin: 30px 0
