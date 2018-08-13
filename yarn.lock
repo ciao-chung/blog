@@ -5687,6 +5687,10 @@ punycode@^1.2.4, punycode@^1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
 
+puppeteer-server-side-render@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/puppeteer-server-side-render/-/puppeteer-server-side-render-1.0.2.tgz#e7eb5b7d0b471fceb367aec033a19b699ecf3543"
+
 q@1.4.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.4.1.tgz#55705bcd93c5f3673530c2c2cbc0c2b3addc286e"

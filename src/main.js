@@ -7,8 +7,8 @@ import VueMoment from 'vue-moment'
 import translate from 'libs/trans.js'
 import GoogleTagManger from 'libs/GoogleTagManger.js'
 import popover from 'src/libs/popover.js'
-import SSR from 'src/libs/SSR'
-
+import SSR from 'puppeteer-server-side-render'
+window.SSR = SSR
 Vue.config.productionTip = false
 
 window.self.$ = $
