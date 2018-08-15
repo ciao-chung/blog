@@ -58,7 +58,7 @@ export default {
         this.$store.dispatch('loading', false)
         this.setupMeta()
         this.setupBreadcrumb()
-        this.$nextTick(SSR.done)
+        this.$nextTick(() => SSR.done())
 
         dataLayer.push({
           'event': 'BlogTracking',

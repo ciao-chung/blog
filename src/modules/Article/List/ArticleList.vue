@@ -27,16 +27,17 @@ export default {
       filter: {},
       categories: null,
       result: null,
+      title: trans('page.article'),
     }
   },
   metaInfo: function () {
     return {
-      title: trans('page.article'),
+      title: this.title,
       meta: [
         {
           vmid: 'og:title',
           property: 'og:title',
-          content: trans('page.article'),
+          content: this.title,
         },
       ],
     }
@@ -46,35 +47,38 @@ export default {
     this.init()
   },
   methods: {
-    init: function () {
+    async init() {
       this.setupBreadcrumb()
-      this.loadArticle()
-      this.loadCategories()
+      this.$store.dispatch('loading')
+      await this.loadCategories()
+      await this.loadArticle()
     },
     loadArticle: async function() {
       this.$store.dispatch('loading')
+      let params = $.extend(true, {}, this.filter)
       try {
-        let params = $.extend(true, {}, this.filter)
         this.result = await api.Article(params)
         this.$store.dispatch('loading', false)
-        this.$nextTick(SSR.done)
-
-        dataLayer.push({
-          'event': 'BlogTracking',
-          'eventCategory': '頁面瀏覽',
-          'eventAction': '文章列表',
-          'eventLabel': JSON.stringify(this.$route.query),
-        })
-      } catch (error) {
+      } catch(error) {
         SSR.error()
         this.$store.dispatch('loading', false)
+        return
       }
+
+      this.setupMeta()
+      this.$nextTick(() => SSR.done())
+      dataLayer.push({
+        'event': 'BlogTracking',
+        'eventCategory': '頁面瀏覽',
+        'eventAction': '文章列表',
+        'eventLabel': JSON.stringify(this.$route.query),
+      })
     },
     loadCategories: async function() {
       this.categories = null
       try {
         this.categories = await api.FlatTree('article')
-      } catch (error) {
+      } catch(error) {
         console.error(error)
       }
     },
@@ -135,12 +139,39 @@ export default {
         query: query
       })
     },
+    setupMeta() {
+      if(!this.filter) return
+      if(!this.filter.search) return
+      if(!this.filter.search['category.category_id']) return
+      const categoryId = this.filter.search['category.category_id']
+      const categoryName = this.getCategoryName(categoryId)
+      let title = trans('page.article')
+      if(categoryName) title = `${title}(${categoryName})`
+      this.title = title
+    },
+    getCategoryName(id) {
+      if(!Array.isArray(this.categories)) return
+      const categories = $.extend(true, [], this.categories)
+      const ids = categories.map((category) => category.id)
+      const index = ids.indexOf(id)
+      if(index == -1) return null
+      return this.categories[index].name
+    },
   },
   watch: {
     $route: function() {
       this.parseQueryAsFilter()
       this.loadArticle()
       this.setupBreadcrumb()
+    },
+  },
+  computed: {
+    page() {
+      if(!this.result) return null
+      if(!this.result.pager) return null
+      if(!this.result.pager.page) return null
+      if(!this.result.pager.page) return null
+      return this.result.pager.page
     },
   },
   components: {

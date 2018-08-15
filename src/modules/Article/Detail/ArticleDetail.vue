@@ -76,7 +76,7 @@ export default {
     loadContent: async function() {
       if(this.article.is_lock) {
         this.$store.dispatch('loading', false)
-        this.$nextTick(SSR.done)
+        this.$nextTick(() => SSR.done())
         return
       }
 
@@ -84,7 +84,7 @@ export default {
         this.$store.dispatch('loading', false)
         const result = await api.ArticleContent(this.id)
         this.content = result.content
-        this.$nextTick(SSR.done)
+        this.$nextTick(() => SSR.done())
       } catch(error) {
         SSR.error()
         this.$store.dispatch('loading', false)

@@ -48,7 +48,7 @@ export default {
         this.result = await api.Design({ page: this.page, per: 8, })
         this.$store.dispatch('loading', false)
         this.setupBreadcrumb()
-        this.$nextTick(SSR.done)
+        this.$nextTick(() => SSR.done())
         dataLayer.push({
           'event': 'BlogTracking',
           'eventCategory': '頁面瀏覽',

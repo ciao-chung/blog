@@ -38,7 +38,7 @@ export default {
           this.loadBanner('vcard'),
         ])
         this.$store.dispatch('loading', false)
-        this.$nextTick(SSR.done)
+        this.$nextTick(() => SSR.done())
       } catch (error) {
         this.$store.dispatch('loading', false)
       }

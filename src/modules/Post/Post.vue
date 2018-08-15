@@ -12,6 +12,7 @@ export default {
   data: function () {
     return {
       post: null,
+      meta: [],
     }
   },
   created: function () {
@@ -39,6 +40,8 @@ export default {
           'eventAction': '文案',
           'eventLabel': this.post.title,
         })
+
+        this.$nextTick(() => SSR.done())
       } catch (reason) {
         this.$store.dispatch('loading', false)
         this.$router.replace({ name: '404' })
