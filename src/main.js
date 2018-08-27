@@ -8,7 +8,7 @@ import translate from 'libs/trans.js'
 import GoogleTagManger from 'libs/GoogleTagManger.js'
 import popover from 'src/libs/popover.js'
 import ServerSideRenderClient from 'puppeteer-server-side-render'
-window.SSR = ServerSideRenderClient({ debug: true })
+window.SSR = ServerSideRenderClient()
 Vue.config.productionTip = false
 
 window.self.$ = $

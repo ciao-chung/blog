@@ -45,7 +45,7 @@ export default {
       this.result = null
       this.$store.dispatch('loading')
       try {
-        this.result = await api.Design({ page: this.page, per: 8, })
+        this.result = await api.Design({ page: this.page, per: 8, sort: { data_order: 'desc'} })
         this.$store.dispatch('loading', false)
         this.setupBreadcrumb()
         this.$nextTick(() => SSR.done())
